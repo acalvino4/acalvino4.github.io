@@ -1,4 +1,5 @@
-## Welcome to my portfolio website source
+## Augustine's Portfolio website
+access at acalvino4.github.io
 
 I created this website simply to display for anyone interested who I am and what I can do, as well as for the fun a building a website.
 
@@ -8,5 +9,3 @@ My biggest takeaway was learning how to make sense of someone else's code and mo
 ### Credits
 
 I started this project with the Strata template from html5up.net.  The background image on the main page is from Unsplash.com.
-
-And of course, the stackoverflow community came in handy many times, as they do for every project.
