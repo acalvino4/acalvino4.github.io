@@ -335,6 +335,7 @@ $size-header-pad: 4em;
 		@include breakpoint('<=xsmall') {
 			@include html-grid(1.5em, 'xsmall');
 		}
+
 	}
 
 /* Section/Article */
@@ -382,7 +383,11 @@ $size-header-pad: 4em;
 /* Form */
 
 	form {
-		margin: 0 0 _size(element-margin) 0;
+		margin: 0 0 _size(element-margin)*2 0;
+
+		p {
+			margin: 0 0 _size(element-margin)/2 0;
+		}
 	}
 
 	label {
@@ -401,7 +406,7 @@ $size-header-pad: 4em;
 		@include vendor('appearance', 'none');
 		background: _palette(border-bg);
 		border-radius: _size(border-radius);
-		border: solid 2px transparent;
+		border: solid 2px _palette(fg);
 		color: inherit;
 		display: block;
 		outline: 0;
@@ -1641,6 +1646,8 @@ $size-header-pad: 4em;
 
 	}
 
+
+@import 'footerfix';
 // Page-specific styles
 @import 'home';
 @import 'about';

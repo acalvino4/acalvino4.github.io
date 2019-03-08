@@ -113,5 +113,102 @@
 				});
 
 			});
+	
+	// Search Bar
+		updateSearchResults = function(event) {
+			$search = $(event.currentTarget)
+			let searchTags = $search.val()
+
+			// prevent a search queue (and more importantly, an animation queue) from building up with each keystroke
+			if($search.hasClass('processing')) return
+			$search.addClass('processing');
+
+			// find which projects match search results
+			let $projects = $('.work-item')
+			let $visibleProjects = $projects.filter(':visible')
+			let $projectsToShow = $projects.filter(function() {
+				projectTags = $(this).children('.project-tags').html()
+				let show = true
+				searchTags.split(' ').forEach(function(tag) {
+					if(projectTags.indexOf(tag)<0) show = false
+				})
+				return show
+			})
+			// change the view smoothly
+			let oldNumProjects = $visibleProjects.length
+			let newNumProjects = $projectsToShow.length
+			if(oldNumProjects!==newNumProjects) {
+				$portfolio = $('.portfolio')
+				//$portfolio.clearQueue()
+				//set height of #two
+				let oldHeight = parseInt($portfolio.css('height'), 10)
+				$portfolio.css('min-height', oldHeight)
+				//fade out
+				.queue(function() {
+					console.log('fading out display')
+					$visibleProjects.fadeOut(800)
+					$(this).dequeue()
+				})
+				//expand height of #two if necessary
+				.queue(function() {
+					console.log('do we need to expand the div?')
+					let newHeight
+					let searchHeight = parseInt($('form').css('height'), 10)
+					let projectHeight = parseInt($projects.css('height'), 10) + 32
+					if(oldHeight>projectHeight*oldNumProjects) {
+						newHeight = searchHeight+projectHeight*newNumProjects + 128
+					} else {
+						newHeight = searchHeight+projectHeight*Math.floor((newNumProjects+1)/2)+128
+					}
+					if(oldHeight<newHeight) {
+						console.log('expanding div height')
+						$portfolio.animate({minHeight: newHeight},800)
+						$(this).dequeue()
+					} else {
+						$(this).dequeue()
+					}
+				})
+				//check for updates
+				.queue(function() {
+					if($search.val()!==searchTags) {
+						$(this).clearQueue()
+						$search.removeClass('processing')
+						updateSearchResults(event)
+						return
+					}
+					$(this).dequeue()
+				})
+				//fade in search results
+				.queue(function() {
+					console.log('fading in search results')
+					$projectsToShow.fadeIn()
+					setTimeout(function() {
+						$portfolio.dequeue()
+					}, 800)
+					
+				})
+				//collapse height of #two
+				.queue(function() {
+					console.log('collapsing outer div')
+					$portfolio.animate({minHeight: 0},800)
+					$search.removeClass('processing')
+					$(this).dequeue()
+				})
+				.queue(function() {
+					if($search.val()!==searchTags) {
+						$(this).clearQueue()
+						$search.removeClass('processing')
+						updateSearchResults(event)
+						return
+					}
+					$(this).dequeue()
+				})
+			} else {
+				$search.removeClass('processing')
+			}
+			
+		}
+
+		$('#search').keyup(updateSearchResults)
 
 })(jQuery);

@@ -243,6 +243,10 @@ pre {
     align-items: flex-end; }
   .row > .imp {
     order: -1; }
+  .row > .col-0 {
+    width: 0%; }
+  .row > .off-0 {
+    margin-left: 0%; }
   .row > .col-1 {
     width: 8.33333%; }
   .row > .off-1 {
@@ -369,6 +373,10 @@ pre {
         align-items: flex-end; }
       .row > .imp-xlarge {
         order: -1; }
+      .row > .col-0-xlarge {
+        width: 0%; }
+      .row > .off-0-xlarge {
+        margin-left: 0%; }
       .row > .col-1-xlarge {
         width: 8.33333%; }
       .row > .off-1-xlarge {
@@ -495,6 +503,10 @@ pre {
         align-items: flex-end; }
       .row > .imp-large {
         order: -1; }
+      .row > .col-0-large {
+        width: 0%; }
+      .row > .off-0-large {
+        margin-left: 0%; }
       .row > .col-1-large {
         width: 8.33333%; }
       .row > .off-1-large {
@@ -621,6 +633,10 @@ pre {
         align-items: flex-end; }
       .row > .imp-medium {
         order: -1; }
+      .row > .col-0-medium {
+        width: 0%; }
+      .row > .off-0-medium {
+        margin-left: 0%; }
       .row > .col-1-medium {
         width: 8.33333%; }
       .row > .off-1-medium {
@@ -747,6 +763,10 @@ pre {
         align-items: flex-end; }
       .row > .imp-small {
         order: -1; }
+      .row > .col-0-small {
+        width: 0%; }
+      .row > .off-0-small {
+        margin-left: 0%; }
       .row > .col-1-small {
         width: 8.33333%; }
       .row > .off-1-small {
@@ -873,6 +893,10 @@ pre {
         align-items: flex-end; }
       .row > .imp-xsmall {
         order: -1; }
+      .row > .col-0-xsmall {
+        width: 0%; }
+      .row > .off-0-xsmall {
+        margin-left: 0%; }
       .row > .col-1-xsmall {
         width: 8.33333%; }
       .row > .off-1-xsmall {
@@ -1007,7 +1031,9 @@ header.major h2 {
 
 /* Form */
 form {
-  margin: 0 0 2em 0; }
+  margin: 0 0 4em 0; }
+  form p {
+    margin: 0 0 1em 0; }
 
 label {
   color: #787878;
@@ -1027,7 +1053,7 @@ textarea {
   appearance: none;
   background: #f7f7f7;
   border-radius: 0.35em;
-  border: solid 2px transparent;
+  border: solid 2px #a2a2a2;
   color: inherit;
   display: block;
   outline: 0;
@@ -2013,6 +2039,21 @@ body.is-touch .poptrox-popup .closer {
     line-height: 2.25em;
     margin-left: 0;
     padding-left: 0; } }
+
+body {
+  min-height: 100vh;
+  position: relative; }
+
+#main {
+  padding-bottom: 165px;
+  /* Height of the footer */ }
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 165px;
+  /* Height of the footer */ }
 
 #about #header {
   padding-left: 0;

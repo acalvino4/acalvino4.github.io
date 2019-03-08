@@ -103,7 +103,7 @@
 						}
 
 					// Columns, offsets.
-						@for $i from 1 through $cols {
+						@for $i from 0 through $cols {
 							> .col-#{$i}#{$suffix} {
 								width: $unit * $i;
 							}
