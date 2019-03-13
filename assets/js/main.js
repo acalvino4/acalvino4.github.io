@@ -209,6 +209,6 @@
 			
 		}
 
-		$('#search').keyup(updateSearchResults)
+		$('#search').on('input',updateSearchResults)
 
 })(jQuery);
