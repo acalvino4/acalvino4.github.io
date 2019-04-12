@@ -116,8 +116,8 @@
 	
 	// Search Bar
 		updateSearchResults = function(event) {
-			$search = $(event.currentTarget) //maybe this line? target?
-			let searchTags = $search.val()
+			$search = $(event.currentTarget)
+			let searchTags = $search.val().toLowerCase()
 			console.log('search: ' + searchTags)
 
 			// prevent a search queue (and more importantly, an animation queue) from building up with each keystroke
@@ -129,7 +129,6 @@
 			let $visibleProjects = $projects.filter(':visible')
 			let $projectsToShow = $projects.filter(function() {
 				projectTags = $(this).children('.project-tags').html()
-				console.log(projectTags)
 				let show = true
 				searchTags.split(' ').forEach(function(tag) {
 					if(projectTags.indexOf(tag)<0) show = false
@@ -173,7 +172,7 @@
 				})
 				//check for updates
 				.queue(function() {
-					if($search.val()!==searchTags) {
+					if($search.val().toLowerCase()!==searchTags) {
 						$(this).clearQueue()
 						$search.removeClass('processing')
 						updateSearchResults(event)
@@ -198,7 +197,7 @@
 					$(this).dequeue()
 				})
 				.queue(function() {
-					if($search.val()!==searchTags) {
+					if($search.val().toLowerCase()!==searchTags) {
 						$(this).clearQueue()
 						$search.removeClass('processing')
 						updateSearchResults(event)
@@ -212,7 +211,6 @@
 			
 		}
 
-		//$('#search').on('input',updateSearchResults)
-		document.getElementById('search').addEventListener('input',updateSearchResults)
-
+		$('#search').on('input',updateSearchResults)
+		
 })(jQuery);
