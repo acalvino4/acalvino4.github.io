@@ -209,6 +209,7 @@
 			
 		}
 
-		$('#search').on('input',updateSearchResults)
+		//$('#search').on('input',updateSearchResults)
+		document.getElementById('search').addEventListener('input',updateSearchResults)
 
 })(jQuery);
