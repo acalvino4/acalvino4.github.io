@@ -119,10 +119,11 @@
 			$search = $(event.currentTarget)
 			let searchTags = $search.val()
 
+			console.log("in update function")
 			// prevent a search queue (and more importantly, an animation queue) from building up with each keystroke
 			if($search.hasClass('processing')) return
 			$search.addClass('processing');
-
+			console.log('checking for updates')
 			// find which projects match search results
 			let $projects = $('.work-item')
 			let $visibleProjects = $projects.filter(':visible')
