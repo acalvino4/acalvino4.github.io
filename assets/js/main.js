@@ -116,25 +116,27 @@
 	
 	// Search Bar
 		updateSearchResults = function(event) {
-			$search = $(event.currentTarget)
+			$search = $(event.currentTarget) //maybe this line? target?
 			let searchTags = $search.val()
+			console.log('search: ' + searchTags)
 
-			console.log("in update function")
 			// prevent a search queue (and more importantly, an animation queue) from building up with each keystroke
 			if($search.hasClass('processing')) return
 			$search.addClass('processing');
-			console.log('checking for updates')
+			
 			// find which projects match search results
 			let $projects = $('.work-item')
 			let $visibleProjects = $projects.filter(':visible')
 			let $projectsToShow = $projects.filter(function() {
 				projectTags = $(this).children('.project-tags').html()
+				console.log(projectTags)
 				let show = true
 				searchTags.split(' ').forEach(function(tag) {
 					if(projectTags.indexOf(tag)<0) show = false
 				})
 				return show
 			})
+			console.log()
 			// change the view smoothly
 			let oldNumProjects = $visibleProjects.length
 			let newNumProjects = $projectsToShow.length
