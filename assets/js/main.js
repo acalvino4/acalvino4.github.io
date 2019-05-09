@@ -118,7 +118,6 @@
 		updateSearchResults = function(event) {
 			$search = $(event.currentTarget)
 			let searchTags = $search.val().toLowerCase()
-			console.log('search: ' + searchTags)
 
 			// prevent a search queue (and more importantly, an animation queue) from building up with each keystroke
 			if($search.hasClass('processing')) return
